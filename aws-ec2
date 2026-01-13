@@ -1,0 +1,237 @@
+📌 What is AWS?
+AWS (Amazon Web Services) is a cloud platform that allows you to deploy applications on remote servers instead of running them on your local laptop.
+
+Laptop → Not running 24/7
+
+Server (Cloud) → Runs 24/7
+
+Pay as you go pricing model
+
+You pay only for what you use (server rent)
+
+☁️ Cloud Service Models
+1️⃣ IaaS – Infrastructure as a Service
+You manage everything.
+
+Examples:
+
+EC2
+
+VPC
+
+EBS
+
+S3 (backup)
+
+Features:
+
+Full control
+
+You decide OS, software, network
+
+Responsibility on user
+
+2️⃣ PaaS – Platform as a Service
+You focus only on application.
+
+Features:
+
+Cloud provider manages OS & infrastructure
+
+Less control
+
+Faster development
+
+3️⃣ SaaS – Software as a Service
+Ready-made software.
+
+Examples:
+
+Gmail
+
+Google Drive
+
+Features:
+
+Just buy & use
+
+No installation
+
+No control
+
+🌍 AWS Regions & Availability Zones
+Region → Geographical location (Mumbai, US, London)
+
+Availability Zone (AZ) → Multiple data centers inside a region
+
+📌 If users are in India, choose Mumbai region for:
+
+Low latency
+
+High availability
+
+Disaster recovery
+
+⚙️ Virtualization Concept
+One physical server can create multiple Virtual Machines (VMs)
+
+Done using Hypervisor
+
+Efficient resource usage
+
+Cost effective
+
+AWS idea started in 2006
+
+🖥️ EC2 (Elastic Compute Cloud)
+EC2 = Virtual Server in AWS
+
+EC2 Launch Steps
+Name & Tags
+
+Select AMI (Amazon Machine Image)
+
+OS template (Linux / Windows)
+
+Choose Instance Type
+
+Create Key Pair
+
+Configure Network & Security Group
+
+Allocate Storage
+
+Launch Instance
+
+📀 AMI (Amazon Machine Image)
+Template used to create EC2
+
+Contains:
+
+OS
+
+Preinstalled software
+
+Configuration
+
+💻 Instance Types
+Type	CPU : Memory
+General Purpose	Balanced
+Compute Optimized	2:1
+Memory Optimized	1:2
+Storage Optimized	Disk heavy
+Accelerated Computing	GPU
+HPC Optimized	High performance
+
+🔐 Key Pair Authentication
+Works like lock & key
+
+Required to connect EC2 securely
+
+Linux
+
+.pem file
+
+SSH
+
+Windows
+
+RDP
+
+Administrator user
+
+🌐 Networking
+Total ports: 65536
+
+Range: 0 – 65535
+
+Common Ports
+
+SSH → 22
+
+RDP → 3389
+
+HTTP → 80
+
+HTTPS → 443
+
+📌 Security Group Source:
+
+pgsql
+Copy code
+0.0.0.0/0  → Open to all (not recommended for prod)
+📊 EC2 Status Checks
+✅ 2/2 Status Check
+System Status Check (AWS infrastructure)
+
+Instance Status Check (Your OS & instance)
+
+❌ Possible States
+1/2 → Partial failure
+
+0/2 → Both failed
+
+2/2 → Instance healthy
+
+🛠️ System Status Check (AWS Side)
+Checks:
+
+Physical server
+
+Network connectivity
+
+Power
+
+AWS storage
+
+🖥️ Instance Status Check (User Side)
+Checks:
+
+OS boot success
+
+CPU / Memory issues
+
+Network configuration
+
+🌐 Hosting Website on EC2
+Website Types
+Static Website (HTML, CSS, JS)
+
+Dynamic Website
+
+🧑‍💻 Web Server Setup
+Linux
+Apache → httpd
+
+bash
+Copy code
+yum install httpd -y
+service httpd start
+Windows
+IIS (Internet Information Services)
+
+📁 Website Files Location
+bash
+Copy code
+/var/www/html
+📂 File Transfer
+Windows → Linux
+WinSCP
+
+Drag & Drop / Copy Paste
+
+Copy Website Files
+bash
+Copy code
+cp -r /home/ec2-user/* /var/www/html/
+🔗 Access Website
+cpp
+Copy code
+http://<EC2-Public-IP>
+💡 Important Notes
+If EC2 is stopped → website not accessible
+
+If instance is deleted → website gone
+
+Always keep backup (S3)
+
